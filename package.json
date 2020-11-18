@@ -1,0 +1,11 @@
+{
+  "name": "todomvc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "open": "^7.3.0",
+    "typescript": "^4.0.5"
+  },
+  "dependencies": {}
+}
