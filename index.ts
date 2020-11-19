@@ -1,10 +1,22 @@
-import { addDisposableListener, generateUuid } from './helpers';
 import Model from './model';
 import Controller from './controller';
 import View from './view';
 
-const model = new Model();
-const view = new View();
-const controller = new Controller(model, view);
+class App {
+    private model = new Model();
+    private view = new View();
+    public controller = new Controller(this.model, this.view);
 
-addDisposableListener(window, 'load', () => controller.setView(document.location.hash), false);
+    constructor() {
+        this.setListeners()
+    }
+
+    setListeners() {
+        document.addEventListener(this.view.AddItemEventType, ({ detail }: CustomEvent["detail"]) => {
+            this.controller.addItem(detail)
+        })
+
+    }
+}
+
+window.addEventListener('load', () => new App(), false)
